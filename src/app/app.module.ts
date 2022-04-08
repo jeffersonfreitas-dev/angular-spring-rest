@@ -1,20 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule} from '@angular/common/http';
+import { HomeComponent } from './home/home.component' //Modulo para realizar requisiçoes Ajax
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http' //Modulo para realizar requisiçoes Ajax
+
+export const appRouters: Routes = [
+  {path:'', component: LoginComponent},
+  {path:'home', component: HomeComponent},
+  {path:'login', component: LoginComponent}
+]
+
+export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters);
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    HttpClientModule,
     FormsModule,
-    HttpClientModule
+    routes
   ],
   providers: [],
   bootstrap: [AppComponent]
