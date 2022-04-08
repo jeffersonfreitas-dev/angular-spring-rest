@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component' //Modulo para realizar req
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 
 export const appRouters: Routes = [
   {path:'', component: LoginComponent},
@@ -21,7 +22,8 @@ export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
