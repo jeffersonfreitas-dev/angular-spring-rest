@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Curso-Angular-REST';
+
+  usuario = {login: '', senha: ''};
+
+  public login(){
+    console.log("Login: " + this.usuario.login + " - Senha: " + this.usuario.senha);
+  }
 }
