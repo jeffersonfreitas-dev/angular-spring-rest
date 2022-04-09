@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+import { HttpInterceptorModule } from './service/header-interceptor.service';
 
 export const appRouters: Routes = [
   {path:'', component: LoginComponent},
@@ -29,7 +30,8 @@ export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    routes
+    routes,
+    HttpInterceptorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
