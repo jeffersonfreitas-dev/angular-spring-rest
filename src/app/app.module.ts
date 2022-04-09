@@ -8,12 +8,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import { HttpInterceptorModule } from './service/header-interceptor.service';
+import { UsuarioComponent } from './component/usuario/usuario/usuario.component';
 
 export const appRouters: Routes = [
   {path:'', component: LoginComponent},
   {path:'home', component: HomeComponent},
-  {path:'login', component: LoginComponent}
+  {path:'login', component: LoginComponent},
+  {path:'usuario-list', component: UsuarioComponent}
 ]
 
 export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters);
@@ -24,14 +25,14 @@ export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    routes,
-    HttpInterceptorModule
+    routes
   ],
   providers: [],
   bootstrap: [AppComponent]

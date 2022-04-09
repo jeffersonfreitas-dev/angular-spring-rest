@@ -17,7 +17,7 @@ export class LoginServiceService {
           localStorage.setItem("token", token);
           this.router.navigate(['home']);
         }, error => {
-          alert("Erro ao fazer o login");
+          alert("Erro ao realizar o login");
         })
   }
 }
