@@ -1,17 +1,18 @@
+<div class="row">
+  <div class="col-12">
+    <table>
+      <thead>
+        <th class="ml-5">Nome</th>
+        <th class="ml-5" >Login</th>
+      </thead>
 
-<table>
-  <thead>
-    <th>ID</th>
-    <th>Nome</th>
-    <th>Login</th>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let usuario of usuarios">
-      <td>{{usuario.uuid}}</td>
-      <td>{{usuario.nome}}</td>
-      <td>{{usuario.login}}</td>
-    </tr>
-  </tbody>
-</table>
-
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td >{{usuario.nome}}</td>
+          <td>{{usuario.login}}</td>
+          <td><button (click)="deletarUsuario(usuario.uuid)" class="btn btn-danger">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

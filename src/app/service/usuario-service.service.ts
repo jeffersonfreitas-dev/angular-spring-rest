@@ -12,10 +12,12 @@ export class UsuarioServiceService {
 
 
   getList() : Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrlUsuario);
+  }
 
-    const user = this.http.get<any>(AppConstants.baseUrlUsuario);
-    console.log(localStorage.getItem('token'));
-    return user;
+
+  deleteById(id:string) : Observable<any> {
+    return this.http.delete(AppConstants.baseUrlUsuario +"/"+ id, {responseType: 'text'});
   }
 
 }
