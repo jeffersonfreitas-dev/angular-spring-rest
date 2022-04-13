@@ -13,6 +13,7 @@ export class UsuarioComponent implements OnInit{
 
 
   usuarios!: Usuario[];
+  nome!: String;
 
   constructor(private service: UsuarioServiceService) { }
 
@@ -32,6 +33,12 @@ export class UsuarioComponent implements OnInit{
       this.listarUsuarios();
     }, error => {
       alert(error);
+    })
+  }
+
+  pesquisarPorNome() {
+    this.service.consultarPorNome(this.nome).subscribe(data => {
+      this.usuarios = data;
     })
   }
 
