@@ -9,12 +9,15 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { UsuarioComponent } from './component/usuario/usuario/usuario.component';
+import { UsuarioAddComponent } from './component/usuario/usuario-add/usuario-add.component';
 
 export const appRouters: Routes = [
   {path:'', component: LoginComponent},
   {path:'home', component: HomeComponent},
   {path:'login', component: LoginComponent},
-  {path:'usuario-list', component: UsuarioComponent}
+  {path:'usuario-list', component: UsuarioComponent},
+  {path:'usuarioAdd', component: UsuarioAddComponent},
+  {path:'usuarioAdd/:uuid', component: UsuarioAddComponent}
 ]
 
 export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters);
@@ -26,7 +29,8 @@ export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    UsuarioAddComponent
   ],
   imports: [
     BrowserModule,

@@ -1,32 +1,41 @@
-<br><br>
+<div class="container">
 
-<form class="row g-3">
-  <div class="col-auto">
-    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="nome" placeholder="Digite o nome para pesquisar">
+  <br><br>
+
+  <div class="row">
+    <form>
+      <div class="row">
+        <div class="col-6">
+          <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="nome" placeholder="Digite o nome para pesquisar">
+        </div>
+        <div class="col-2">
+          <button type="button" (click)="pesquisarPorNome()" class="btn btn-primary mb-3">Buscar</button>
+          <button type="button" [routerLink]="['/usuarioAdd']" style="margin-left: 10px;"
+              routerLinkActive="router-link-active" class="btn btn-success mb-3">Novo</button>
+        </div>
+      </div>
+    </form>
+    <br><br>
   </div>
-  <div class="col-auto">
-    <button type="button" (click)="pesquisarPorNome()" class="btn btn-primary mb-3">Buscar</button>
-  </div>
-</form>
-
-<br><br>
 
 
-<div class="row">
-  <div class="col-12">
-    <table>
-      <thead>
-        <th class="ml-5">Nome</th>
-        <th class="ml-5" >Login</th>
-      </thead>
-
-      <tbody>
-        <tr *ngFor="let usuario of usuarios">
-          <td >{{usuario.nome}}</td>
-          <td>{{usuario.login}}</td>
-          <td><button (click)="deletarUsuario(usuario.uuid)" class="btn btn-danger">Delete</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Login</th>
+        <th scope="col">Nome</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <td>{{usuario.uuid}}</td>
+        <td>{{usuario.login}}</td>
+        <td>{{usuario.nome}}</td>
+        <td><button (click)="deletarUsuario(usuario.uuid)" class="btn btn-danger">Delete</button></td>
+        <td><button [routerLink]="['/usuarioAdd', usuario.uuid]" routerLinkActive="router-link-active" class="btn btn-warning">Editar</button></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
