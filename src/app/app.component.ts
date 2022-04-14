@@ -20,4 +20,12 @@ export class AppComponent implements OnInit{
 
   title = 'Curso-Angular-REST';
 
+  esconderNavbar(){
+    if(localStorage.getItem('token') != null){
+      return false;
+    }else {
+      return true;
+    }
+  }
+
 }

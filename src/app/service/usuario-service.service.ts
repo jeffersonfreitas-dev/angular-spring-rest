@@ -1,13 +1,14 @@
+import { Usuario } from 'src/app/model/usuario.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConstants } from '../app-constants';
-import { Usuario } from '../model/usuario.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioServiceService {
+  [x: string]: any;
 
   constructor(private http: HttpClient) { }
 
@@ -18,11 +19,29 @@ export class UsuarioServiceService {
 
 
   deleteById(id:string) : Observable<any> {
-    return this.http.delete(AppConstants.baseUrlUsuario +"/"+ id, {responseType: 'text'});
+    return this.http.delete(AppConstants.baseUrlUsuario + id, {responseType: 'text'});
   }
 
   consultarPorNome(nome:String) : Observable<any>{
-    return this.http.get<any>(AppConstants.baseUrlUsuario +"/"+nome);
+    return this.http.get<any>(AppConstants.baseUrlUsuario + "search/" + nome);
+  }
+
+  findById(uuid:String) : Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrlUsuario + uuid);
+  }
+
+  update(usuario: Usuario) : Observable<any> {
+    return this.http.put<any>(AppConstants.baseUrlUsuario + usuario.uuid, usuario);
+  }
+
+  create(usuario: Usuario) : Observable<any> {
+    return this.http.post(AppConstants.baseUrlUsuario, usuario);
+  }
+
+  usuarioAutenticado(){
+    const token = localStorage.getItem('token');
+    if(token == null) return false;
+    return true;
   }
 
 }
