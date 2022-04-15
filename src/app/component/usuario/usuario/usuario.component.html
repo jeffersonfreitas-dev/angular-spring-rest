@@ -29,11 +29,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let usuario of usuarios | paginate : {itemsPerPage:5, currentPage: p, totalItems: total}">
+      <tr *ngFor="let usuario of usuarios | paginate : {itemsPerPage:5, currentPage: p, totalItems: total}; let i = index">
         <td>{{usuario.uuid}}</td>
         <td>{{usuario.login}}</td>
         <td>{{usuario.nome}}</td>
-        <td><button (click)="deletarUsuario(usuario.uuid)" class="btn btn-danger">Delete</button></td>
+        <td><button (click)="deletarUsuario(usuario.uuid, i)" class="btn btn-danger">Delete</button></td>
         <td><button [routerLink]="['/usuarioAdd', usuario.uuid]" routerLinkActive="router-link-active" class="btn btn-warning">Editar</button></td>
       </tr>
     </tbody>

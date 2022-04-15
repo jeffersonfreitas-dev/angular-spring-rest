@@ -30,12 +30,11 @@ export class UsuarioComponent implements OnInit{
     });
   }
 
-  deletarUsuario(id: string){
+  deletarUsuario(id: string, index: number){
 
     if(confirm('Deseja mesmo remover o registro de código: ' + id + "?")){
       this.service.deleteById(id).subscribe(data => {
-        alert(data);
-        this.listarUsuarios();
+        this.usuarios.splice(index, 1);
       }, error => {
         alert(error);
       })
