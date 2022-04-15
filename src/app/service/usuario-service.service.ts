@@ -19,6 +19,10 @@ export class UsuarioServiceService {
     return this.http.get<any>(AppConstants.baseUrlUsuario);
   }
 
+  getListPage(pagina:any) : Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrlUsuario + "page/" + pagina);
+  }
+
 
   deleteById(id:string) : Observable<any> {
     return this.http.delete(AppConstants.baseUrlUsuario + id, {responseType: 'text'});

@@ -12,6 +12,7 @@ import { UsuarioServiceService } from 'src/app/service/usuario-service.service';
 export class UsuarioComponent implements OnInit{
 
   p: number = 1;
+  total: number = 0;
 
   usuarios!: Usuario[];
   nome!: String;
@@ -19,12 +20,13 @@ export class UsuarioComponent implements OnInit{
   constructor(private service: UsuarioServiceService) { }
 
   ngOnInit(): void {
-    this.listarUsuarios();
+    this.carregarPagina(1);
   }
 
   listarUsuarios(){
     this.service.getList().subscribe(data => {
-      this.usuarios = data;
+      this.usuarios = data.content;
+      this.total = data.totalElements;
     });
   }
 
@@ -44,6 +46,13 @@ export class UsuarioComponent implements OnInit{
     this.service.consultarPorNome(this.nome).subscribe(data => {
       this.usuarios = data;
     })
+  }
+
+  carregarPagina(pagina:any) {
+    this.service.getListPage(pagina).subscribe(data => {
+      this.usuarios = data.content;
+      this.total = data.totalElements;
+    });
   }
 
 }
