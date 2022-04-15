@@ -1,6 +1,6 @@
 import { Usuario } from 'src/app/model/usuario.model';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppConstants } from '../app-constants';
 
@@ -11,6 +11,8 @@ export class UsuarioServiceService {
   [x: string]: any;
 
   constructor(private http: HttpClient) { }
+
+
 
 
   getList() : Observable<any> {

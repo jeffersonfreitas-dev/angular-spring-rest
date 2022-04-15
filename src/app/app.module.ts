@@ -1,3 +1,4 @@
+import { Interceptor } from './service/header-interceptor.service';
 import { GuardiaoGuard } from './service/guardiao.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ModuleWithProviders } from '@angular/core';
@@ -37,7 +38,8 @@ export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    routes
+    routes,
+    Interceptor
   ],
   providers: [],
   bootstrap: [AppComponent]

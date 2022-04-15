@@ -28,12 +28,15 @@ export class UsuarioComponent implements OnInit{
   }
 
   deletarUsuario(id: string){
-    this.service.deleteById(id).subscribe(data => {
-      alert(data);
-      this.listarUsuarios();
-    }, error => {
-      alert(error);
-    })
+
+    if(confirm('Deseja mesmo remover o registro de código: ' + id + "?")){
+      this.service.deleteById(id).subscribe(data => {
+        alert(data);
+        this.listarUsuarios();
+      }, error => {
+        alert(error);
+      })
+    }
   }
 
   pesquisarPorNome() {

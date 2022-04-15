@@ -11,13 +11,12 @@ export class LoginServiceService {
   constructor(private http: HttpClient, private router:Router) { }
 
   login(usuario:any){
-    return this.http.post(AppConstants.baseLogins, JSON.stringify(usuario))
-        .subscribe(data => {
+    return this.http.post(AppConstants.baseLogins, JSON.stringify(usuario)).subscribe(data => {
           var token = JSON.parse(JSON.stringify(data)).Authorization.split(" ")[1];
           localStorage.setItem("token", token);
           this.router.navigate(['home']);
         }, error => {
-          alert("Erro ao realizar o login");
+          alert("Erro ao realizar o login: " + error);
         })
   }
 }
