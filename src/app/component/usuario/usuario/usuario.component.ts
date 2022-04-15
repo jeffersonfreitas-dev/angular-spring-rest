@@ -15,7 +15,7 @@ export class UsuarioComponent implements OnInit{
   total: number = 0;
 
   usuarios!: Usuario[];
-  nome!: String;
+  nome: String = ''
 
   constructor(private service: UsuarioServiceService) { }
 
@@ -42,9 +42,18 @@ export class UsuarioComponent implements OnInit{
   }
 
   pesquisarPorNome() {
-    this.service.consultarPorNome(this.nome).subscribe(data => {
-      this.usuarios = data;
-    })
+
+    if(this.nome === ''){
+      this.carregarPagina(1);
+    }else {
+      this.service.consultarPorNome(this.nome).subscribe(data => {
+        console.info(this.nome);
+        this.usuarios = data.content;
+        this.total = data.totalElements;
+      })
+
+    }
+
   }
 
   carregarPagina(pagina:any) {
