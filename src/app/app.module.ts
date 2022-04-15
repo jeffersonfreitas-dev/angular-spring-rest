@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { UsuarioComponent } from './component/usuario/usuario/usuario.component';
 import { UsuarioAddComponent } from './component/usuario/usuario-add/usuario-add.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export const appRouters: Routes = [
   {path:'', component: LoginComponent},
@@ -35,6 +36,7 @@ export const routes : ModuleWithProviders<any> = RouterModule.forRoot(appRouters
     UsuarioAddComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,

@@ -11,6 +11,7 @@ import { UsuarioServiceService } from 'src/app/service/usuario-service.service';
 })
 export class UsuarioComponent implements OnInit{
 
+  p: number = 1;
 
   usuarios!: Usuario[];
   nome!: String;
